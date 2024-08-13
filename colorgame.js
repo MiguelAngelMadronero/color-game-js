@@ -23,34 +23,12 @@ let squareColor = [...square];
 init();
 
 function init(){
-    levels.forEach(level=>{
-        level.addEventListener("click", ()=>{
-            levels.forEach(lvl => lvl.classList.remove("selected"));
-            level.classList.add("selected");
-            level.textContent === "EASY" ? numberOfSquares = 3 : numberOfSquares = 6 ;
-            reset();
-        })
-    })
+    
+    eventlevelButtons();
 
-    buttonReset.addEventListener("click", ()=>{
-        reset();    
-    });
+    eventResetButton();
 
-    squareColor.forEach(cuadrado=>{
-        cuadrado.addEventListener("click", ()=>{
-            let clickedColor=cuadrado.style.backgroundColor;
-            if(clickedColor!==pickedColor){
-                cuadrado.style.backgroundColor="#232323";
-                console.log(clickedColor)
-                spanMessage.textContent="Inténtalo nuevamente";
-            }else{
-                spanMessage.textContent="¡Correcto!";
-                title.style.backgroundColor=pickedColor;
-                buttonReset.textContent="Play Again?";
-                paintAllSquares();
-            }
-        })
-    })
+    eventClickSquare();
 
     paintSquareOnThePage();
 
@@ -101,6 +79,40 @@ function init(){
 //     console.log(colors);
 // });
 
+function eventlevelButtons(){
+    levels.forEach(level=>{
+        level.addEventListener("click", ()=>{
+            levels.forEach(lvl => lvl.classList.remove("selected"));
+            level.classList.add("selected");
+            level.textContent === "EASY" ? numberOfSquares = 3 : numberOfSquares = 6 ;
+            reset();
+        })
+    })
+}
+
+function eventResetButton(){
+    buttonReset.addEventListener("click", ()=>{
+        reset();    
+    });
+}
+
+function eventClickSquare(){
+    squareColor.forEach(cuadrado=>{
+        cuadrado.addEventListener("click", ()=>{
+            let clickedColor=cuadrado.style.backgroundColor;
+            if(clickedColor!==pickedColor){
+                cuadrado.style.backgroundColor="#232323";
+                console.log(clickedColor)
+                spanMessage.textContent="Inténtalo nuevamente";
+            }else{
+                spanMessage.textContent="¡Correcto!";
+                title.style.backgroundColor=pickedColor;
+                buttonReset.textContent="Play Again?";
+                paintAllSquares();
+            }
+        })
+    })
+}
 
 function paintSquareOnThePage(){
     for (let i = 0; i < squareColor.length; i++) {
