@@ -23,9 +23,7 @@ let isWinner=false;
 
 spanColor.textContent=pickedColor;
 
-function init(){
-    reset();
-}
+
 
 buttonReset.addEventListener("click", ()=>{
     // buttonReset.textContent=textButtonReset;
